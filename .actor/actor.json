@@ -1,0 +1,72 @@
+{
+  "actorSpecification": 1,
+  "name": "ftc-compliance-checker",
+  "title": "FTC Compliance Checker for Influencer Posts",
+  "description": "AI-powered FTC compliance analysis for influencer marketing content. Detects disclosure violations, calculates risk scores, and estimates financial exposure.",
+  "version": "1.0.0",
+  "meta": {
+    "templateId": "python-start"
+  },
+  "input": "./input_schema.json",
+  "dockerfile": "./Dockerfile",
+  "readme": "./README.md",
+  "categories": [
+    "AI",
+    "AUTOMATION"
+  ],
+  "storages": {
+    "dataset": {
+      "actorSpecification": 1,
+      "title": "Compliance Analysis Results",
+      "views": {
+        "overview": {
+          "title": "Overview",
+          "transformation": {
+            "fields": [
+              "post_id",
+              "platform",
+              "influencer_username",
+              "has_violation",
+              "risk_level",
+              "risk_score",
+              "estimated_exposure"
+            ]
+          },
+          "display": {
+            "component": "table",
+            "properties": {
+              "post_id": {
+                "label": "Post ID",
+                "format": "text"
+              },
+              "platform": {
+                "label": "Platform",
+                "format": "text"
+              },
+              "influencer_username": {
+                "label": "Influencer",
+                "format": "text"
+              },
+              "has_violation": {
+                "label": "Violation",
+                "format": "boolean"
+              },
+              "risk_level": {
+                "label": "Risk Level",
+                "format": "text"
+              },
+              "risk_score": {
+                "label": "Risk Score",
+                "format": "number"
+              },
+              "estimated_exposure": {
+                "label": "Exposure ($)",
+                "format": "number"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

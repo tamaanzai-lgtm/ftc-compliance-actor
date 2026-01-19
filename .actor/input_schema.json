@@ -1,0 +1,121 @@
+{
+  "title": "FTC Compliance Checker Input",
+  "type": "object",
+  "schemaVersion": 1,
+  "properties": {
+    "posts": {
+      "title": "Social Media Posts",
+      "type": "array",
+      "description": "Array of social media posts to analyze for FTC compliance",
+      "editor": "json",
+      "prefill": [
+        {
+          "id": "post_001",
+          "platform": "instagram",
+          "url": "https://instagram.com/p/example",
+          "influencer": {
+            "username": "fitlife_sarah",
+            "followers": 500000
+          },
+          "post": {
+            "caption": "Loving my new FitTea! It's amazing for weight loss. Link in bio to get yours! 🍵✨",
+            "hashtags": ["#fitness", "#weightloss", "#fittea"],
+            "engagement": {
+              "likes": 15000,
+              "comments": 450
+            }
+          }
+        }
+      ],
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Post ID",
+            "description": "Unique identifier for the post"
+          },
+          "platform": {
+            "type": "string",
+            "title": "Platform",
+            "description": "Social media platform (instagram, tiktok, youtube, etc.)",
+            "enum": ["instagram", "tiktok", "youtube", "twitter", "facebook"]
+          },
+          "url": {
+            "type": "string",
+            "title": "Post URL",
+            "description": "Direct URL to the post"
+          },
+          "influencer": {
+            "type": "object",
+            "title": "Influencer Info",
+            "properties": {
+              "username": {
+                "type": "string",
+                "title": "Username"
+              },
+              "followers": {
+                "type": "integer",
+                "title": "Follower Count"
+              }
+            },
+            "required": ["username", "followers"]
+          },
+          "post": {
+            "type": "object",
+            "title": "Post Content",
+            "properties": {
+              "caption": {
+                "type": "string",
+                "title": "Caption/Text"
+              },
+              "hashtags": {
+                "type": "array",
+                "title": "Hashtags",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "engagement": {
+                "type": "object",
+                "title": "Engagement Metrics",
+                "properties": {
+                  "likes": {
+                    "type": "integer"
+                  },
+                  "comments": {
+                    "type": "integer"
+                  }
+                }
+              }
+            },
+            "required": ["caption"]
+          }
+        },
+        "required": ["id", "platform", "influencer", "post"]
+      }
+    },
+    "openaiApiKey": {
+      "title": "OpenAI API Key",
+      "type": "string",
+      "description": "Your OpenAI API key for AI-powered compliance analysis. Get one at https://platform.openai.com/api-keys",
+      "editor": "textfield",
+      "isSecret": true
+    },
+    "detailedAnalysis": {
+      "title": "Include Detailed Analysis",
+      "type": "boolean",
+      "description": "Include detailed AI reasoning and FTC guideline references in results",
+      "default": true
+    },
+    "riskThreshold": {
+      "title": "Risk Score Threshold",
+      "type": "integer",
+      "description": "Only report violations with risk score above this threshold (0-100)",
+      "default": 50,
+      "minimum": 0,
+      "maximum": 100
+    }
+  },
+  "required": ["posts", "openaiApiKey"]
+}

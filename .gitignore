@@ -10,7 +10,6 @@ ENV/
 # Apify
 apify_storage/
 storage/
-.actor/
 
 # Environment
 .env
