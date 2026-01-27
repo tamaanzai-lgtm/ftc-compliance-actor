@@ -1,7 +1,7 @@
 """FTC Compliance Checker Actor for Apify"""
 
 from apify import Actor
-from openai import OpenAI
+from openai import OpenAI  # DeepSeek uses OpenAI-compatible API
 import json
 
 
@@ -15,21 +15,24 @@ async def main():
         platform = actor_input.get('platform', 'instagram')
         username = actor_input.get('influencerUsername', 'unknown')
         followers = actor_input.get('followerCount', 0)
-        openai_api_key = actor_input.get('openaiApiKey')
+        api_key = actor_input.get('apiKey') or actor_input.get('openaiApiKey')  # Support both field names
         
         if not post_text:
             Actor.log.error('No post text provided')
             return
         
-        if not openai_api_key:
-            Actor.log.error('OpenAI API key required')
+        if not api_key:
+            Actor.log.error('API key required (DeepSeek or OpenAI)')
             return
         
         Actor.log.info(f'Analyzing post from @{username} on {platform}')
         
         try:
-            # AI compliance analysis
-            client = OpenAI(api_key=openai_api_key)
+            # AI compliance analysis using DeepSeek API
+            client = OpenAI(
+                api_key=api_key,
+                base_url="https://api.deepseek.com"  # DeepSeek API endpoint
+            )
             
             prompt = f"""Analyze this social media post for FTC disclosure violations:
 
@@ -50,9 +53,9 @@ Respond in JSON:
 }}"""
 
             response = client.chat.completions.create(
-                model="gpt-4",
+                model="deepseek-chat",  # DeepSeek's chat model
                 messages=[
-                    {"role": "system", "content": "You are an FTC compliance expert. Respond with valid JSON only."},
+                    {"role": "system", "content": "You are an FTC compliance expert analyzing social media posts for disclosure violations. Respond with valid JSON only."},
                     {"role": "user", "content": prompt}
                 ],
                 temperature=0.3,

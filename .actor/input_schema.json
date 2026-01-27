@@ -31,13 +31,14 @@
       "minimum": 0,
       "default": 500000
     },
-    "openaiApiKey": {
-      "title": "OpenAI API Key",
+    "apiKey": {
+      "title": "DeepSeek API Key",
       "type": "string",
-      "description": "Your OpenAI API key for AI-powered compliance analysis",
+      "description": "Your DeepSeek API key for AI-powered compliance analysis (also supports OpenAI API keys)",
       "editor": "textfield",
-      "isSecret": true
+      "isSecret": true,
+      "prefill": "sk-..."
     }
   },
-  "required": ["postText", "openaiApiKey"]
+  "required": ["postText", "apiKey"]
 }

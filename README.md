@@ -6,7 +6,7 @@ This Actor automatically detects FTC disclosure violations in social media posts
 
 ## Features
 
-✅ **AI-Powered Analysis** - Uses GPT-4 to detect FTC violations with 95%+ accuracy  
+✅ **AI-Powered Analysis** - Uses DeepSeek AI to detect FTC violations with 95%+ accuracy  
 ✅ **Multi-Platform Support** - Instagram, TikTok, YouTube, Twitter, Facebook  
 ✅ **Risk Scoring** - 0-100 risk scores based on severity, reach, and engagement  
 ✅ **Financial Exposure** - Estimates FTC fines, legal costs, and reputation damage  
