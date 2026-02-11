@@ -5,6 +5,7 @@
   "properties": {
     "results": {
       "title": "Compliance Analysis Results",
+      "type": "string",
       "description": "Dataset containing FTC compliance analysis for each analyzed post",
       "template": "{{links.apiDefaultDatasetUrl}}/items"
     }
