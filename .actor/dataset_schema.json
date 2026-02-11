@@ -1,0 +1,105 @@
+{
+  "actorDatasetSchemaVersion": 1,
+  "title": "FTC Compliance Analysis Results",
+  "description": "Detailed FTC compliance analysis for social media posts",
+  "fields": {
+    "post_id": {
+      "title": "Post ID",
+      "type": "string",
+      "description": "Unique identifier for the social media post"
+    },
+    "platform": {
+      "title": "Platform",
+      "type": "string",
+      "description": "Social media platform (Instagram, TikTok, YouTube, Twitter)"
+    },
+    "influencer_username": {
+      "title": "Influencer Username",
+      "type": "string",
+      "description": "Username of the influencer who created the post"
+    },
+    "follower_count": {
+      "title": "Follower Count",
+      "type": "integer",
+      "description": "Number of followers the influencer has"
+    },
+    "post_text": {
+      "title": "Post Text",
+      "type": "string",
+      "description": "Full text content of the post"
+    },
+    "has_violation": {
+      "title": "Has Violation",
+      "type": "boolean",
+      "description": "Whether the post violates FTC disclosure guidelines"
+    },
+    "risk_level": {
+      "title": "Risk Level",
+      "type": "string",
+      "description": "Risk classification (LOW, MEDIUM, HIGH, CRITICAL)"
+    },
+    "risk_score": {
+      "title": "Risk Score",
+      "type": "integer",
+      "description": "Numerical risk score from 0-100"
+    },
+    "estimated_exposure": {
+      "title": "Estimated Financial Exposure ($)",
+      "type": "number",
+      "description": "Estimated potential FTC fine in USD"
+    },
+    "violation_reasons": {
+      "title": "Violation Reasons",
+      "type": "array",
+      "description": "List of specific FTC guideline violations detected"
+    },
+    "recommendations": {
+      "title": "Recommendations",
+      "type": "array",
+      "description": "Suggested actions to achieve compliance"
+    },
+    "analysis_timestamp": {
+      "title": "Analysis Timestamp",
+      "type": "string",
+      "description": "ISO 8601 timestamp when the analysis was performed"
+    }
+  },
+  "views": {
+    "overview": {
+      "title": "Overview",
+      "transformation": {
+        "fields": [
+          "influencer_username",
+          "platform",
+          "has_violation",
+          "risk_level",
+          "risk_score",
+          "estimated_exposure"
+        ]
+      },
+      "display": {
+        "component": "table",
+        "properties": {
+          "influencer_username": {
+            "label": "Influencer"
+          },
+          "platform": {
+            "label": "Platform"
+          },
+          "has_violation": {
+            "label": "Violation?"
+          },
+          "risk_level": {
+            "label": "Risk"
+          },
+          "risk_score": {
+            "label": "Score"
+          },
+          "estimated_exposure": {
+            "label": "Est. Fine ($)"
+          }
+        }
+      }
+    }
+  }
+}

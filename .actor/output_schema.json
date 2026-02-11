@@ -1,90 +1,12 @@
 {
   "actorOutputSchemaVersion": 1,
-  "title": "FTC Compliance Analysis Results",
-  "type": "object",
-  "schemaVersion": 1,
+  "title": "FTC Compliance Analysis Output",
+  "description": "Output from FTC compliance analysis of social media posts",
   "properties": {
-    "post_id": {
-      "title": "Post ID",
-      "type": "string",
-      "description": "Unique identifier for the social media post",
-      "editor": "textfield"
-    },
-    "platform": {
-      "title": "Platform",
-      "type": "string",
-      "description": "Social media platform (Instagram, TikTok, YouTube, Twitter)",
-      "editor": "textfield"
-    },
-    "influencer_username": {
-      "title": "Influencer Username",
-      "type": "string",
-      "description": "Username of the influencer who created the post",
-      "editor": "textfield"
-    },
-    "follower_count": {
-      "title": "Follower Count",
-      "type": "integer",
-      "description": "Number of followers the influencer has",
-      "editor": "number"
-    },
-    "post_text": {
-      "title": "Post Text",
-      "type": "string",
-      "description": "Full text content of the post",
-      "editor": "textarea"
-    },
-    "has_violation": {
-      "title": "Has Violation",
-      "type": "boolean",
-      "description": "Whether the post violates FTC disclosure guidelines",
-      "editor": "checkbox"
-    },
-    "risk_level": {
-      "title": "Risk Level",
-      "type": "string",
-      "description": "Risk classification (LOW, MEDIUM, HIGH, CRITICAL)",
-      "editor": "select",
-      "enum": ["LOW", "MEDIUM", "HIGH", "CRITICAL"]
-    },
-    "risk_score": {
-      "title": "Risk Score",
-      "type": "integer",
-      "description": "Numerical risk score from 0-100",
-      "editor": "number",
-      "minimum": 0,
-      "maximum": 100
-    },
-    "estimated_exposure": {
-      "title": "Estimated Financial Exposure ($)",
-      "type": "number",
-      "description": "Estimated potential FTC fine in USD",
-      "editor": "number"
-    },
-    "violation_reasons": {
-      "title": "Violation Reasons",
-      "type": "array",
-      "description": "List of specific FTC guideline violations detected",
-      "editor": "json",
-      "items": {
-        "type": "string"
-      }
-    },
-    "recommendations": {
-      "title": "Recommendations",
-      "type": "array",
-      "description": "Suggested actions to achieve compliance",
-      "editor": "json",
-      "items": {
-        "type": "string"
-      }
-    },
-    "analysis_timestamp": {
-      "title": "Analysis Timestamp",
-      "type": "string",
-      "description": "ISO 8601 timestamp when the analysis was performed",
-      "editor": "textfield",
-      "format": "date-time"
+    "results": {
+      "title": "Compliance Analysis Results",
+      "description": "Dataset containing FTC compliance analysis for each analyzed post",
+      "template": "{{links.apiDefaultDatasetUrl}}/items"
     }
   }
 }

@@ -9,6 +9,9 @@
   },
   "input": "./input_schema.json",
   "output": "./output_schema.json",
+  "storages": {
+    "dataset": "./dataset_schema.json"
+  },
   "dockerfile": "./Dockerfile",
   "readme": "./README.md",
   "icon": "./actor_icon.png",
